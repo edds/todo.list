@@ -42,7 +42,7 @@ li:hover, h1:hover {
 input {
     vertical-align: middle;
 }
-.newlist {
+.globalactions {
 	display: block;
 	text-align: right;
 	padding-top: 1em;

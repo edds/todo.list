@@ -3,7 +3,7 @@
 <title>todo.list</title>
 
 <link rel="stylesheet" type="text/css" href="style.css">
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js?v=2"></script>
+<script type="text/javascript" src="jquery.min.js?v=2"></script>
 <script type="text/javascript" src="script.js"></script>
 
 <div class="wrapper">
@@ -12,5 +12,5 @@ include('functions.php');
 printLists();
 ?>
 
-<a href="#" class="newlist">new list</a>
+<p class="globalactions"><a href="#" class="newlist">new list</a> - <a href="?show_me_the_archive=true">ahow archive</a></p>
 </div>

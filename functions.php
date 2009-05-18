@@ -7,11 +7,12 @@ mysql_select_db($db_database);
 
 function getLists(){
     $lists = array();
-    $result = mysql_query("SELECT * FROM todo_lists WHERE Archive='0'") or die(mysql_error());
+	$show_archive = !empty($_GET['show_me_the_archive']) ? '' : " WHERE Archive='0'";
+    $result = mysql_query("SELECT * FROM todo_lists$show_archive") or die(mysql_error());
     while($row = mysql_fetch_assoc($result)){
         $lists[$row['ListID']]['Title'] = $row['Title'];    
     }
-    $result = mysql_query("SELECT * FROM todo_tasks WHERE Archive='0'") or die(mysql_error());
+    $result = mysql_query("SELECT * FROM todo_tasks$show_archive") or die(mysql_error());
     while($row = mysql_fetch_assoc($result)){
         $lists[$row['ListID']]['Tasks'][] = $row;    
     }

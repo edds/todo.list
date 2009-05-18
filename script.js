@@ -20,7 +20,7 @@ function editText(e){
     var item = $("span",getFirst(e, "li"));
     var newText = prompt("New Text:",item.text());
     if(newText != null){
-        item.html(newText.replace(/(@[^\W]+)/g,'<em>$1</em>'));
+        item.html(newText.replace(/(#[^\W]+)/g,'<em>$1</em>'));
         $.post('action.php', {'update': newText, 'item': item.parent().attr('task') });
     }
 }
@@ -28,7 +28,7 @@ function setUpNewItemLinks(e){
     var newItem = prompt("New Item:");
     var link = $(e.target);
     if(newItem != null){
-        var taggedItem = newItem.replace(/(@[^\W]+)/g,'<em>$1</em>');
+        var taggedItem = newItem.replace(/(#[^\W]+)/g,'<em>$1</em>');
         $('<li task="temp"><input type="checkbox"> <span>'+taggedItem+'</span></li>').appendTo("ul[list='"+link.attr('list')+"']");
         $.post('action.php', { "insert": newItem, "list": link.attr('list') }, 
         function(data){
