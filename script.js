@@ -3,7 +3,7 @@ if(typeof jQuery == 'undefined'){
 }
 function addItemEvents(i,elm){
     $("input[type='checkbox']",elm).change(markDone);
-    $(elm).dblclick(editText);
+    $("span", elm).click(editText);
 }
 function markDone(e){
     var item = $(this).parent();
@@ -15,6 +15,7 @@ function markDone(e){
         $("span",item).removeClass('done');
     }
     $.post('action.php', {'mark': mark, 'item': item.attr('task') });
+    return false;
 }
 function editText(e){
     var item = $("span",getFirst(e, "li"));
@@ -72,10 +73,20 @@ function getFirst(e, node){
     }
     return elm;
 }
+function archiveItems(e){
+    var l = $(e.target).parent().attr('list');
+    $.get('action.php', {"archive": l });
+    var items = $("ul[list='"+ l +"'] span.done");
+    items.each(function(i){
+        $(this).parent().hide();
+    });
+    return false;
+}
 $(document).ready(function(){
     $("li").each(addItemEvents);
     $("a.newitem").click(setUpNewItemLinks);
-    $("h1").dblclick(setUpEditListTitle);
+    $("h1").click(setUpEditListTitle);
     $("a.newlist").click(setUpNewList);
     $(".archive").click(setUpArchiveList);
+    $('.archiveDone').click(archiveItems);
 })

@@ -3,8 +3,10 @@
 <title>todo.list</title>
 
 <link rel="stylesheet" type="text/css" href="style.css">
-<script type="text/javascript" src="jquery.min.js?v=2"></script>
+<script type="text/javascript" src="jquery.min.js"></script>
 <script type="text/javascript" src="script.js"></script>
+<meta name="viewport" content="width=320, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
 
 <div class="wrapper">
 <?php
